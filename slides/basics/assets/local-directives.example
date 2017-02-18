@@ -1,0 +1,17 @@
+<div id="app">
+    <input v-auto-focus>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    
+    directives: {
+      autoFocus: {
+        inserted: el => {
+          el.focus()
+        } 
+      }
+    }
+  });
+</script>

@@ -83,6 +83,17 @@ const notes = {
     Het enigste dat we nodig hebben is eigenlijk een Vue instance dit we binden aan ons #app element en waar we de data als ons model bezien die properties bevat.
     Doordat we onze Vue instance aan onze #app hangen kunnen we de propertie message renderen, logischer wijs is de propertie message niet aanspreekbaar buiten ons #app element.
   `,
+  directives: `
+    Zij die angular kennen, als in iedereen waarschijnlijk, gaan hier redelijk snel mee mee zijn. (overloop de verschillende directives). Zoals je op het eerste zicht kan zien is het "grote" verschil de v- prefix. Wat ook opvalt is de v-on, bij angular heb je gewoon de ng-click en de ng-change etc..
+    Bij vuejs maak je gebruik van v-on:click. Ik laat het even zien in een codepen die ik voorbereid heb om het beter uit te leggen. (laat ook zeker de shorthands voor v-bind (:title) en v-on (@click) zien ;) 
+  `,
+  globalDirectives: `
+    Wanneer je een directive wilt maken die over heel het project beschikbaar moet zijn moet je hem global maken. Hierdoor is hij overal beschikbaar. Een directive heeft altijd de v-prefix (wat ik wel jammer vind omdat je zo niet u eigen directives kan onderscheiden van vue directives)..
+    Je moet er ook altijd voor zorgen dat de directive gedeclareerd is voor hij gebruikt wordt. De eerste propertie is de directive name, met een object als 2de propertie.
+  `,
+  localDirectives: `
+    Wanneer je een feature specifieke directive wilt maken kan je gebruik maken van een local directive, deze moet je declareren in de Vue instance onder het directive gedeelte. de item name wordt de directive name.
+  `,
 };
 
 
@@ -108,19 +119,21 @@ export default class Presentation extends React.Component {
           <Heading size={6} textColor="secondary" caps>Table of Content</Heading>
           <List>
             <ListItem>Why Vue.js</ListItem>
+            <ListItem>Basic setup</ListItem>
             <ListItem>
-              Basic setup
+              Directives
               <List margin="0 0 0 90px">
-                <ListItem>Hello World</ListItem>
-                <ListItem>Bindings</ListItem>
+                <ListItem>Global</ListItem>
+                <ListItem>Local</ListItem>
+                <ListItem>Hooks</ListItem>
               </List>
             </ListItem>
-            <ListItem>Directives</ListItem>
             <ListItem>
               Components
               <List margin="0 0 0 90px">
                 <ListItem>Setup</ListItem>
                 <ListItem>Events</ListItem>
+                <ListItem>Props</ListItem>
                 <ListItem>Slots</ListItem>
               </List>
             </ListItem>
@@ -185,7 +198,7 @@ export default class Presentation extends React.Component {
       <CodeSlide
         notes={notes.basicSetup}
         className="codeSlide"
-        transition={["fade"]}
+        transition={[""]}
         lang="html"
         code={require("raw-loader!../assets/setup-html.example")}
         ranges={[
@@ -196,7 +209,61 @@ export default class Presentation extends React.Component {
           { loc: [6, 7] },
           { loc: [7, 10] },
           { loc: [0, 15] },
-          { loc: [0, 15], note: "http://codepen.io/RobbertWolfs/pen/YNqqRJ" }
+          { loc: [0, 15], note: "http://codepen.io/RobbertWolfs/pen/oBRyVK" }
+        ]}
+      />
+
+      <Slide transition={["fade"]} bgColor="primary" textColor="tertiary" notes={notes.directives}>
+          <Heading size={4} textColor="secondary" caps>Directives</Heading>
+          <List>
+             <Appear><ListItem>v-bind</ListItem></Appear>
+             <Appear><ListItem>v-if</ListItem></Appear>
+             <Appear><ListItem>v-for</ListItem></Appear>
+             <Appear><ListItem>v-on</ListItem></Appear>
+             <Appear><ListItem>v-model</ListItem></Appear>
+          </List>
+
+           <Appear><Text margin="10px 0 0" textColor="tertiary" size={3}>
+            <a className="dark" href="http://codepen.io/RobbertWolfs/pen/OWYwPp" target="_blank">Codepen demo</a>
+          </Text></Appear>
+      </Slide>
+
+      <Slide transition={["fade"]} bgColor="tertiary" notes={notes.customDirectives}>
+          <Heading size={4} textColor="secondary" caps>Custom Directives</Heading>
+          <Text margin="50px 0 0" lineHeight="1.5" textColor="primary">
+            When you just need some low-level DOM access on plain elements, you could create a custom directive. <br /> <br /> You can register a global or a local directive.
+          </Text>
+      </Slide>
+
+      <CodeSlide
+        notes={notes.globalDirectives}
+        className="codeSlide"
+        transition={[""]}
+        lang="html"
+        code={require("raw-loader!../assets/global-directives.example")}
+        ranges={[
+          { loc: [0, 20], title: "Global directives" },
+          { loc: [11, 14] },
+          { loc: [0, 3] },
+          { loc: [5, 10] },
+          { loc: [5, 6] },
+          { loc: [6, 9] },
+          { loc: [0, 20], note: "http://codepen.io/RobbertWolfs/pen/oBRyVK" }
+        ]}
+      />
+
+      <CodeSlide
+        notes={notes.localDirectives}
+        className="codeSlide"
+        transition={[""]}
+        lang="html"
+        code={require("raw-loader!../assets/local-directives.example")}
+        ranges={[
+          { loc: [0, 20], title: "Local directives" },
+          { loc: [5, 16] },
+          { loc: [0, 3] },
+          { loc: [8, 15] },
+          { loc: [0, 20], note: "http://codepen.io/RobbertWolfs/pen/YNbjvN" }
         ]}
       />
 
