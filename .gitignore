@@ -1,0 +1,4 @@
+templates/vuejs-webpack/node_modules
+templates/webpack/app/bundle
+templates/webpack/dist
+templates/webpack/node_modules

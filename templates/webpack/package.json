@@ -1,0 +1,40 @@
+{
+  "name": "webpack-template",
+  "version": "1.0.0",
+  "description": "WebPack Template",
+  "scripts": {
+    "cleanup": "rm -rf app/bundle && rm -rf dist", 
+    "serve": "rm -rf app/bundle && webpack-dev-server --open --inline --hot",
+    "serve:prod": "live-server ./dist",
+    "build:prod": "rm -rf dist && cross-env NODE_ENV=production webpack",
+    "build": "cross-env NODE_ENV=development webpack"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^3.3.7"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2017-node7": "^0.4.1",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "cross-env": "^3.1.4",
+    "css-loader": "^0.26.1",
+    "eslint": "^3.14.1",
+    "eslint-config-airbnb-base": "^11.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "extract-text-webpack-plugin": "^2.0.0-beta",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.28.0",
+    "json-loader": "^0.5.4",
+    "node-sass": "^4.3.0",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
+    "webpack": "2.2.0",
+    "webpack-dev-server": "2.2.0",
+    "webpack-merge": "^2.4.0"
+  }
+}
