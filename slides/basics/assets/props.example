@@ -1,0 +1,17 @@
+<div id="app">
+    // If we want to use dynamic props we should add v-bind
+    <foo message="Hello World"></foo>
+</div>
+
+<script>
+  Vue.component('foo', {
+    // All props form a one-way-down binding between 
+    // the child property and the parent one
+    props: ['message'],
+    template: '<span>{{ message }}</span>'
+  })
+
+  new Vue({
+    el: '#app',
+  });
+</script>

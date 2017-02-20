@@ -1,0 +1,18 @@
+<div id="app">
+    <foo></foo>
+</div>
+
+<script>
+  // Make sure the component is registered
+  // before you instantiate the root 
+  // Vue instance.
+  Vue.component('foo', {
+    template: `
+      <h1>Custom content</h1>
+    `,
+  })
+
+  new Vue({
+    el: '#app',
+  });
+</script>

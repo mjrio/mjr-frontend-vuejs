@@ -1,0 +1,17 @@
+<div id="app">
+    <foo></foo>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    components: {
+      foo: {
+        template: '<span>{{ content }}</span>',
+        data: () => ({
+          content: 'Our content from inside our local component',
+        }),
+      }
+    }
+  });
+</script>
