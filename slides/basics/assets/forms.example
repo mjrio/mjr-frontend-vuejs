@@ -1,0 +1,30 @@
+<div id="app">
+    <input v-model="msg" placeholder="edit">
+
+    <textarea v-model="multilineMessage" placeholder="add multiple lines"></textarea>
+    
+    <input type="checkbox" id="checkbox" v-model="checked">
+
+    <div>
+      <input type="radio" id="one" value="One" v-model="picked">
+      <input type="radio" id="two" value="Two" v-model="picked">
+    </div>
+
+    <select v-model="selected">
+      <option>A</option>
+      <option>B</option>
+      <option>C</option>
+    </select>
+</div>
+
+<script>
+  new Vue({
+    el: '#app',
+    data: {
+      msg: '',
+      multilineMessage: '',
+      checked: false,
+      selected: '',
+    },
+  });
+</script>

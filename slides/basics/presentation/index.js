@@ -186,6 +186,9 @@ const notes = {
     <br>
     Het is niet mogelijk om $on te gebruiken in de parent component, dit moet door middel van v-on.
   `,
+  forms: `
+    Door gebruik te maken van v-model kunnen we two-way binding creëeren. 
+  `
 };
 
 
@@ -478,8 +481,40 @@ export default class Presentation extends React.Component {
         ]}
       />
 
+      <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+        <Heading size={6} textColor="secondary" caps>Event Modifiers</Heading> 
+        <Text margin="50px 0 0" lineHeight="1.5" textColor="primary">Modifiers are something I find very usefull. There are 3 kind of modifiers :</Text>
+        <List>
+            <ListItem>Event Modifiers</ListItem>
+            <ListItem>Key Modifiers</ListItem>
+            <ListItem>Modifier Keys</ListItem>
+          </List>
+      </Slide>
 
-        <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+      <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
+        <Heading size={6} textColor="secondary" caps>Slots</Heading> 
+      </Slide>
+
+
+      <CodeSlide
+        notes={notes.forms}
+        className="codeSlide"
+        transition={[""]}
+        lang="html"
+        code={require("raw-loader!../assets/forms.example")}
+        ranges={[
+          { loc: [0, 30], title: "Forms" },
+          { loc: [20, 29] },
+          { loc: [1, 2] },
+          { loc: [3, 4] },
+          { loc: [5, 6] },
+          { loc: [7, 11] },
+          { loc: [12, 17] },
+          { loc: [0, 30], note: "http://codepen.io/RobbertWolfs/pen/ggVYPq" }
+        ]}
+      />
+
+      <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
           <Heading size={6} textColor="secondary" caps>Usefull resources</Heading>
           <List>
             <ListItem><a className="dark" href="https://vuejs.org/" target="_blank">VueJS website</a></ListItem>
@@ -487,13 +522,8 @@ export default class Presentation extends React.Component {
             <ListItem><a className="dark" href="https://github.com/vuejs/awesome-vue" target="_blank">Awesome vue</a></ListItem>
             <ListItem><a className="dark" href="http://codepen.io/collection/nxZjoR" target="_blank">Codepen List of my demo's</a></ListItem>
           </List>
-        </Slide>
-        <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
-          <BlockQuote>
-            <Quote>Example Quote</Quote>
-            <Cite>Author</Cite>
-          </BlockQuote>
-        </Slide>
+      </Slide>
+
       </Deck>
     );
   }
