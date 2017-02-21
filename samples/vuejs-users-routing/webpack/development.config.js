@@ -1,5 +1,4 @@
-/* eslint-disable */
-
+// eslint-disable-next-line
 const merge = require('webpack-merge')
 const webpackBase = require('./base.config')
 

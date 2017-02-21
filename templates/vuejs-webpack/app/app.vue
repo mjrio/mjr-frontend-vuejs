@@ -6,11 +6,11 @@
 
 <script>
   export default {
-    components: {
+    data() {
+      return {
+        title: 'Vue with WebPack',
+      }
     },
-    data: () => ({
-      title: 'Vue with WebPack',
-    }),
   }
 </script>
 

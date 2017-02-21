@@ -1,8 +1,6 @@
-/* eslint-disable */
-
 const webpack = require('webpack')
-const merge = require('webpack-merge')
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+var merge = require('webpack-merge')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 const webpackBase = require('./base.config')
 

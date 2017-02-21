@@ -1,6 +1,7 @@
-/* eslint-disable */
 const path = require('path')
 const webpack = require('webpack')
+const pkg = require('../package.json')
+
 const env = process.env.NODE_ENV || 'development'
 
 module.exports = {
@@ -18,6 +19,14 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.json$/,
+        loader: 'json-loader',
+      },
+      {
+        test: /\.html$/,
+        loader: 'html-loader',
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
       },
@@ -27,10 +36,19 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    // extensions: ['.js', '.scss', '.css'],
+    alias: {
+      // specifies the full commonJS build
+      // https://github.com/vuejs/vue/blob/dev/dist/README.md
+      'vue': 'vue/dist/vue.common.js',
+    },
+  },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(env),
+        VERSION: JSON.stringify(pkg.version),
       },
     }),
   ],
@@ -38,4 +56,5 @@ module.exports = {
   devtool: 'eval-cheap-module-source-map',
 }
 
+console.log('App Version: ', pkg.version)
 console.log('Build Env: ', env)

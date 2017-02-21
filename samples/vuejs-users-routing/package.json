@@ -1,7 +1,7 @@
 {
-  "name": "vuejs-webpack-template",
+  "name": "webpack-template",
   "version": "1.0.0",
-  "description": "VueJS - WebPack Template",
+  "description": "WebPack Template",
   "scripts": {
     "start": "nodemon server/server.js",
     "serve": "webpack-dev-server --open --inline --hot",
@@ -12,11 +12,15 @@
   "license": "MIT",
   "dependencies": {
     "Faker": "^0.7.2",
+    "axios": "^0.15.3",
     "body-parser": "^1.16.0",
+    "bootstrap": "^3.3.7",
     "express": "^4.14.0",
     "morgan": "^1.7.0",
     "underscore": "^1.8.3",
-    "vue": "^2.1.10"
+    "vue": "^2.1.10",
+    "vue-router": "^2.2.0",
+    "vue-toast": "^3.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.21.0",
@@ -42,6 +46,7 @@
     "vue-style-loader": "^1.0.0",
     "vue-template-compiler": "^2.1.10",
     "webpack": "2.2.0",
+    "webpack-dashboard": "^0.2.1",
     "webpack-dev-server": "2.2.0",
     "webpack-merge": "^2.4.0"
   }
