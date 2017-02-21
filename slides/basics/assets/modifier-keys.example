@@ -1,0 +1,5 @@
+// Ctrl + X
+<input @keyup.ctrl.88="clear" value="clear me"/>
+
+// Alt + Click
+<button @click.alt="doSomething">Do something</button>

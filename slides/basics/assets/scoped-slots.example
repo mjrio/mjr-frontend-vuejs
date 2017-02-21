@@ -1,0 +1,24 @@
+<parent></parent>
+
+<script>
+    Vue.component('child', {
+        template: `
+            <div class="child">
+                <slot text="hello from child"></slot>
+            </div>
+        `
+    });
+
+    Vue.component('parent', {
+        template: `
+        <div class="parent">
+            <child>
+                <template scope="props">
+                <span>hello from parent</span>
+                <span>{{ props.text }}</span>
+                </template>
+            </child>
+        </div>
+        `
+    });
+</script>

@@ -188,6 +188,36 @@ const notes = {
   `,
   forms: `
     Door gebruik te maken van v-model kunnen we two-way binding creëeren. 
+  `,
+  modifiers: `
+    Vue heeft ook een eigen set aan modifiers. Ik vind deze persoonlijk super handig om snel en overzichtelijk. Vue heeft 3 soorten modifiers: 
+
+    <br ><br >
+    <ul>
+      <li>Event Modifiers: hiermee kan je rechtstreeks een event gaan tegen houde door behulp van bv e.preventDefault</li>
+      <li>Key Modifiers: luister rechstreeks op een specifieke keycode, super handig omdat je niet altijd alle keycodes van buiten kent. Ook heb je de mogelijk om zelf custom keycodes toe te voegen.</li>
+      <li>Modifier Keys: maak gebruik van extra keys voor een bepaalde event op te roepen</li>
+    </ul>
+  `,
+  slots: `
+    Slots kan je volgens mij het best vergelijken met transclude in angular. Hiermee kan je bv makkelijk een setup doen van je layout zonder dat je moet weten welke content er gebruikt wordt. 
+    Je kan een tot meerdere slots gebruiken. Wanneer je 1 slot gebruikt wordt de content rechtstreeks in deze "default" slot gerenderd. Wanneer je gebruik maakt van multiple slots moet je de slots voorzien van een "name" attribute.
+
+    <br ><br> 
+    (next slide)
+    <br ><br> 
+    Hierdoor kan je specifiek zeggen welke content in welke slot moet komen. Wanneer je meerdere slots gebruikt, kan er maximaal 1 unnamed slot zijn. 
+     <br ><br> 
+    In ons voorbeeld zie je dat we een component hebben met 2 named slots en 1 unnamed slot.
+  `,
+  scopedSlots: `
+    Scoped slots vond ik in niet super duidelijk in het begin dus ik ga het proberen zo goed mogelijk uit te leggen :)
+    <br ><br >
+
+    Hiermee kan je properties doorgeven van je child component die mee binnen de slot moeten gerendered worden. Deze propertie moet je dan gebruiken in je parent component waar je de rest van de content zet.
+
+    <br ><br >
+  Om dit te bereiken maken we gebruik van  "template" met een "scope" attribute.    
   `
 };
 
@@ -238,7 +268,6 @@ export default class Presentation extends React.Component {
               </List>
             </ListItem>
             <ListItem>Forms</ListItem>
-            <ListItem>Vue vs ...</ListItem>
           </List>
         </Slide>
 
@@ -269,23 +298,60 @@ export default class Presentation extends React.Component {
        </Slide>
 
        <Slide transition={["fade"]} bgColor="tertiary" notes={notes.stats}>
-          <Heading size={3} textColor="primary" caps>Vue in 2016</Heading>
+          <Text textColor="quartenary" textSize="18">
+            <Image src={images.evan.replace("/", "")} width="300px" />
+            <br />
+            <br />
+            Founded in 2014,
+            by <a href="https://twitter.com/youyuxi" target="_blank">@youyuxi</a>
+          </Text>
+
+          <Appear><Heading size={6} textColor="secondary" caps margin="30px 0 0">Vue in 2016</Heading></Appear>
 
           <List textColor="primary">
-            <Appear><ListItem textSize="21">NPM downloads: 1,943,567 total, 1,531,217 YTD (up from 382,184 in 2115, +300%)</ListItem></Appear>
-            <Appear><ListItem textSize="21">Core repo GitHub stars: 37,664 total, ~26,000 YTD (up from ~7,600 in 2015, +240%)</ListItem></Appear>
-            <Appear><ListItem textSize="21">vuejs.org page views: 21,424,759 YTD (up from 3,761,728 in 2015, +470%)</ListItem></Appear>
+            <Appear>
+              <ListItem textSize="21">NPM downloads:
+                <List textColor="quartenary" margin="0 0 0 40px">
+                  <ListItem textSize="21">
+                    1,943,567 total
+                  </ListItem>
+                  <ListItem textSize="21">
+                   1,531,217 YTD
+                  </ListItem>
+                  <ListItem textSize="21">
+                   up from 382,184 in 2115, +300%
+                  </ListItem>
+                </List>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textSize="21">Core repo GitHub stars
+                <List textColor="quartenary" margin="0 0 0 40px">
+                  <ListItem textSize="21">
+                    37,664 total
+                  </ListItem>
+                  <ListItem textSize="21">
+                   ~26,000 YTD
+                  </ListItem>
+                  <ListItem textSize="21">
+                   up from ~7,600 in 2015, +240%
+                  </ListItem>
+                </List>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem textSize="21">vuejs.org page views
+                <List textColor="quartenary" margin="0 0 0 40px">
+                  <ListItem textSize="21">
+                    21,424,759 YTD
+                  </ListItem>
+                  <ListItem textSize="21">
+                   up from 3,761,728 in 2015, +470%
+                  </ListItem>
+                </List>
+              </ListItem>
+            </Appear>
           </List>
-
-          <Appear>
-            <Text textColor="quartenary" textSize="18">
-              <Image src={images.evan.replace("/", "")} width="300px" />
-              <br />
-              <br />
-              Founded in 2014,
-              by <a href="https://twitter.com/youyuxi" target="_blank">@youyuxi</a>
-            </Text>
-          </Appear>
       </Slide>
 
       <Slide transition={["fade"]} bgColor="secondary" textColor="primary">
@@ -296,6 +362,10 @@ export default class Presentation extends React.Component {
           <Image src={images.trending.replace("/", "")} width="100%"/>
       </Slide>
 
+      <Slide transition={["slide"]} bgColor="primary">
+          <Heading size={2} textColor="secondary" caps margin="100px">Basic Setup</Heading>
+      </Slide>
+
       <CodeSlide
         notes={notes.basicSetup}
         className="codeSlide"
@@ -303,7 +373,7 @@ export default class Presentation extends React.Component {
         lang="html"
         code={require("raw-loader!../assets/setup-html.example")}
         ranges={[
-          { loc: [0, 15], title: "Basic setup" },
+          { loc: [0, 15], title: "Setup" },
           { loc: [0, 3] },
           { loc: [4, 12] },
           { loc: [5, 6] },
@@ -314,12 +384,17 @@ export default class Presentation extends React.Component {
         ]}
       />
 
-      <Slide transition={["fade"]} bgColor="primary" textColor="tertiary" notes={notes.lifecyclehook}>          
+      <Slide transition={["zoom"]} bgColor="primary">
+          <Heading size={6} textColor="tertiary" caps margin="100px">Lifecycle Hooks</Heading>
+      </Slide>
+
+      <Slide transition={["fade"]} bgColor="primary" textColor="tertiary" notes={notes.lifecyclehook}>
           <Image className="lifecycle" src={images.lifecycle.replace("/", "")} width="45%"/>
       </Slide>
 
       <Slide transition={["fade"]} bgColor="primary" textColor="tertiary" notes={notes.directives}>
-          <Heading size={4} textColor="secondary" caps>Directives</Heading>
+          <Heading size={2} textColor="secondary" caps margin="100px">Directives</Heading>
+
           <List>
              <Appear><ListItem>v-bind</ListItem></Appear>
              <Appear><ListItem>v-if</ListItem></Appear>
@@ -450,7 +525,7 @@ export default class Presentation extends React.Component {
         ]}
       />
 
-        <Slide transition={["fade"]} bgColor="tertiary" notes={notes.events}> 
+        <Slide transition={["fade"]} bgColor="tertiary" notes={notes.events}>
           <Heading size={6} textColor="primary" caps>Events</Heading>
           <Text margin="50px 0 0" lineHeight="1.5" textColor="primary">Every Vue instance implements an events interface, which means it can:</Text>
           <List>
@@ -481,20 +556,154 @@ export default class Presentation extends React.Component {
         ]}
       />
 
-      <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-        <Heading size={6} textColor="secondary" caps>Event Modifiers</Heading> 
-        <Text margin="50px 0 0" lineHeight="1.5" textColor="primary">Modifiers are something I find very usefull. There are 3 kind of modifiers :</Text>
-        <List>
-            <ListItem>Event Modifiers</ListItem>
-            <ListItem>Key Modifiers</ListItem>
-            <ListItem>Modifier Keys</ListItem>
-          </List>
+      <Slide transition={["fade"]} bgColor="primary" textColor="tertiary" notes={notes.modifiers}>
+        <Heading size={6} textColor="tertiary" caps>Modifiers</Heading>
+
+        <Table>
+            <TableHeader>
+              <TableRow textColor="quartenary">
+                <Appear>
+                  <TableHeaderItem padding="10px" textSize="40">Event Modifiers</TableHeaderItem>
+                </Appear>
+                <Appear>
+                  <TableHeaderItem padding="10px" textSize="40">Key Modifiers</TableHeaderItem>
+                </Appear>
+                <Appear>
+                  <TableHeaderItem padding="10px" textSize="40">Modifier Keys</TableHeaderItem>
+                </Appear>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <Appear>
+                  <TableItem textColor="secondary" textSize="25">
+                    .stop<br />
+                    .prevent<br />
+                    .capture<br />
+                    .self<br />
+                    .once<br />
+                  </TableItem>
+                </Appear>
+                <Appear>
+                  <TableItem textColor="secondary" textSize="25">
+                    .enter <br/>
+                    .tab <br/>
+                    .delete<br/>
+                    .esc <br/>
+                    .space <br/>
+                    .up <br/>
+                    .down <br/>
+                    .left <br/>
+                    .right <br/>
+                  </TableItem>
+                </Appear>
+                <Appear>
+                  <TableItem textColor="secondary" textSize="25">
+                    .ctrl <br />
+                    .alt <br />
+                    .shift <br />
+                    .meta <br />
+                  </TableItem>
+                </Appear>
+              </TableRow>
+            </TableBody>
+          </Table>
       </Slide>
 
-      <Slide transition={["fade"]} bgColor="primary" textColor="tertiary">
-        <Heading size={6} textColor="secondary" caps>Slots</Heading> 
+      <CodeSlide
+        notes={notes.eventModifiers}
+        className="codeSlide"
+        transition={[""]}
+        lang="html"
+        code={require("raw-loader!../assets/event-modifiers.example")}
+        ranges={[
+          { loc: [0, 11], title: "Event Modifiers" },
+          { loc: [0, 2] },
+          { loc: [3, 5] },
+          { loc: [6, 8] },
+          { loc: [9, 11] },
+          { loc: [0, 11], note: "http://codepen.io/RobbertWolfs/pen/KaOrMq" }
+        ]}
+      />
+
+      <CodeSlide
+        notes={notes.keyModifiers}
+        className="codeSlide"
+        transition={[""]}
+        lang="html"
+        code={require("raw-loader!../assets/key-modifiers.example")}
+        ranges={[
+          { loc: [0, 11], title: "Key Modifiers" },
+          { loc: [0, 2] },
+          { loc: [3, 5] },
+          { loc: [6, 9] },
+          { loc: [0, 11], note: "http://codepen.io/RobbertWolfs/pen/RKXqLP" }
+        ]}
+      />
+
+      <CodeSlide
+        notes={notes.modifierKeys}
+        className="codeSlide"
+        transition={[""]}
+        lang="html"
+        code={require("raw-loader!../assets/modifier-keys.example")}
+        ranges={[
+          { loc: [0, 6], title: "Modifier Keys" },
+          { loc: [0, 2] },
+          { loc: [3, 5] },
+          { loc: [0, 6], note: "http://codepen.io/RobbertWolfs/pen/qReQyz" }
+        ]}
+      />
+
+      <Slide transition={["slide"]} bgColor="primary" notes={notes.slots}>
+        <Heading size={6} textColor="tertiary" caps margin="100px">Slots</Heading>
       </Slide>
 
+      <CodeSlide
+        notes={notes.slots}
+        className="codeSlide"
+        transition={[""]}
+        lang="html"
+        code={require("raw-loader!../assets/slots.example")}
+        ranges={[
+          { loc: [0, 27], title: "Named slots" },
+          { loc: [10, 25] },
+          { loc: [14, 15] },
+          { loc: [17, 18] },
+          { loc: [20, 21] },
+          { loc: [0, 8] },
+          { loc: [1, 2] },
+          { loc: [14, 15] },
+          { loc: [3, 5] },
+          { loc: [17, 18] },
+          { loc: [6, 7] },
+          { loc: [20, 21] },
+          { loc: [0, 27], note: "http://codepen.io/RobbertWolfs/pen/WRVLBW" }
+        ]}
+      />
+
+      <CodeSlide
+        notes={notes.scopedSlots}
+        className="codeSlide"
+        transition={[""]}
+        lang="html"
+        code={require("raw-loader!../assets/scoped-slots.example")}
+        ranges={[
+          { loc: [0, 27], title: "Scoped slots" },
+          { loc: [0, 1] },
+          { loc: [11, 23] },
+          { loc: [14, 20] },
+          { loc: [15, 19] },
+          { loc: [3, 10] },
+          { loc: [6, 7] },
+          { loc: [17, 18] },
+          { loc: [0, 27], note: "http://codepen.io/RobbertWolfs/pen/JEgxdJ" }
+        ]}
+      />
+
+      <Slide transition={["slide"]} bgColor="primary">
+        <Heading size={2} textColor="secondary" caps margin="100px">Forms</Heading>
+      </Slide>
 
       <CodeSlide
         notes={notes.forms}
@@ -521,6 +730,7 @@ export default class Presentation extends React.Component {
             <ListItem><a className="dark" href="https://github.com/vuejs/vue-devtools" target="_blank">Dev tools</a></ListItem>
             <ListItem><a className="dark" href="https://github.com/vuejs/awesome-vue" target="_blank">Awesome vue</a></ListItem>
             <ListItem><a className="dark" href="http://codepen.io/collection/nxZjoR" target="_blank">Codepen List of my demo's</a></ListItem>
+            <ListItem><a className="dark" href="https://vuejs.org/v2/guide/comparison.html" target="_blank">Comparisation : Vue vs ...</a></ListItem>
           </List>
       </Slide>
 

@@ -1,0 +1,26 @@
+<app-layout>
+    <h1 slot="header">Page title</h1>
+
+    <p>A paragraph for the main content.</p>
+    <p>And another one.</p>
+
+    <p slot="footer">Contact info</p>
+</app-layout>
+
+<script>
+    Vue.component('app-layout', {
+        template: `
+        <div class="container">
+            <header>
+                <slot name="header"></slot>
+            </header>
+            <main>
+                <slot></slot>
+            </main>
+            <footer>
+                <slot name="footer"></slot>
+            </footer>
+        </div>
+        `
+    });
+</script>

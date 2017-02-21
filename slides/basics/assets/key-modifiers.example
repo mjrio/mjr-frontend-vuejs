@@ -1,0 +1,9 @@
+// only call submit() when the keyCode is 13
+<input @keyup.13="submit">
+
+// same as above
+<input @keyup.enter="submit">
+
+// create custom keyCode
+Vue.config.keyCodes.equal = 187
+<input @on:keyup.equal="submit">

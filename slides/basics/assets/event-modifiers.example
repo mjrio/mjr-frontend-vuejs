@@ -1,0 +1,11 @@
+<!-- the click event's propagation will be stopped -->
+<a @click.stop="doThis"></a>
+
+<!-- the submit event will no longer reload the page -->
+<form @submit.prevent="onSubmit"></form>
+
+<!-- modifiers can be chained -->
+<a @click.stop.prevent="doThat"></a>
+
+<!-- just the modifier -->
+<form @submit.prevent></form>
