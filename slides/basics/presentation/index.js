@@ -42,7 +42,8 @@ const images = {
   popular: require("../assets/popular.png"),
   trending: require("../assets/trending.png"),
   evan: require("../assets/evan.png"),
-  lifecycle: require("../assets/lifecycle.png")
+  lifecycle: require("../assets/lifecycle.png"),
+  micdrop: require("../assets/micdrop3.gif")
 };
 
 preloader(images);
@@ -319,7 +320,7 @@ export default class Presentation extends React.Component {
                    1,531,217 YTD
                   </ListItem>
                   <ListItem textSize="21">
-                   up from 382,184 in 2115, +300%
+                   up from 382,184 in 2015, +300%
                   </ListItem>
                 </List>
               </ListItem>
@@ -398,6 +399,7 @@ export default class Presentation extends React.Component {
           <List>
              <Appear><ListItem>v-bind</ListItem></Appear>
              <Appear><ListItem>v-if</ListItem></Appear>
+             <Appear><ListItem>v-show</ListItem></Appear>
              <Appear><ListItem>v-for</ListItem></Appear>
              <Appear><ListItem>v-on</ListItem></Appear>
              <Appear><ListItem>v-model</ListItem></Appear>
@@ -733,6 +735,8 @@ export default class Presentation extends React.Component {
             <ListItem><a className="dark" href="https://vuejs.org/v2/guide/comparison.html" target="_blank">Comparisation : Vue vs ...</a></ListItem>
           </List>
       </Slide>
+
+      <Slide transition={["slide"]} bgImage={images.micdrop.replace("/", "")}  />
 
       </Deck>
     );

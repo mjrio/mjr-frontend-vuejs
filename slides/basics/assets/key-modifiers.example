@@ -6,4 +6,4 @@
 
 // create custom keyCode
 Vue.config.keyCodes.equal = 187
-<input @on:keyup.equal="submit">
+<input @keyup.equal="submit">
