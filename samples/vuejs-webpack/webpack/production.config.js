@@ -12,13 +12,27 @@ module.exports = merge.smart(webpackBase, {
 
   module: {
     rules: [
-      // extract css to file
+      // extract less to file
+      // for all none .vue files
       {
         test: /\.less$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
           use: 'css-loader!less-loader',
         }),
+      },
+      // override vue-loader to extract css
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          loaders: {
+            less: ExtractTextPlugin.extract({
+              use: 'css-loader!less-loader',
+              fallback: 'vue-style-loader',
+            }),
+          },
+        },
       },
     ],
   },

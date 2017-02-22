@@ -20,7 +20,6 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
-        exclude: /node_modules/,
       },
       {
         test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,

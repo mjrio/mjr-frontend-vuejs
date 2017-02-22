@@ -2,3 +2,7 @@ templates/vuejs-webpack/node_modules
 templates/webpack/app/bundle
 templates/webpack/dist
 templates/webpack/node_modules
+samples/vuejs-webpack/node_modules/acorn-jsx/node_modules
+samples/vuejs-webpack/node_modules
+templates/vuejs-webpack/app/bundle
+samples/vuejs-webpack/app/bundle
